@@ -1,263 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-adsense-account" content="ca-pub-4349583490319558">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4349583490319558" crossorigin="anonymous"></script>
-  <title>Architecture & Developer Space | CCNA Labs</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #2563eb;
-      --accent: #0ea5e9;
-      --bg-light: #f8fafc;
-      --text-main: #0f172a;
-      --border: rgba(0, 0, 0, 0.08);
-    }
-
-    body {
-      background-color: var(--bg-light);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-    }
-
-    /* Navigation */
-    nav {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(15px);
-      padding: 1.2rem;
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav a { color: #64748b; text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
-    nav a:hover { color: var(--primary); }
-
-    /* Header */
-    header {
-      padding: 80px 20px;
-      text-align: center;
-      background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.05), transparent), url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000');
-      background-size: cover;
-      background-attachment: fixed;
-    }
-
-    h1 { font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: -1.5px; }
-
-    /* Terminal */
-    .terminal {
-      background: #1e293b;
-      border-radius: 16px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-      overflow: hidden;
-      font-family: 'Fira Code', monospace;
-      text-align: left;
-    }
-    .terminal-header { background: #334155; padding: 12px 20px; display: flex; align-items: center; }
-    .dot { width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; }
-    .terminal-body { padding: 25px; font-size: 0.9rem; color: #f8fafc; }
-    .prompt { color: var(--accent); font-weight: bold; }
-
-    /* --- THE DYNAMIC SPLIT SECTION --- */
-    .split-container {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 40px;
-      align-items: center;
-      padding: 100px 5%;
-      background: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%);
-    }
-
-    .about-content { text-align: left; }
-    .about-content h2 { font-weight: 800; font-size: 2.5rem; margin-bottom: 20px; color: var(--text-main); }
-    .about-content p { font-size: 1.1rem; line-height: 1.7; color: #475569; }
-
-    .features-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .feature-card-horizontal {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    }
-
-    .feature-card-horizontal:hover {
-      transform: translateX(15px);
-      border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
-    }
-
-    .icon-box {
-      width: 55px; height: 55px;
-      background: rgba(37, 99, 235, 0.05);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-
-    /* Lab Items */
-    .lab-item {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 20px;
-      width: 280px;
-      text-decoration: none;
-      color: inherit;
-      transition: 0.3s;
-      flex-shrink: 0;
-    }
-    .lab-item:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-    .lab-item strong { color: var(--primary); display: block; margin-bottom: 5px; }
-
-    .labs-scroll-container { overflow: hidden; padding: 40px 0; }
-    .labs-track { display: flex; gap: 20px; animation: scroll 40s linear infinite; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-    .btn-main {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white !important;
-      padding: 16px 40px;
-      border-radius: 14px;
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-    }
-
-    @media (max-width: 992px) {
-      .split-container { grid-template-columns: 1fr; text-align: center; }
-      .about-content { text-align: center; }
-      .feature-card-horizontal:hover { transform: translateY(-5px); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture & Developer Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-   <nav>
-    <a href="#about">About</a>
-    <a href="labs.html">Labs</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <nav>
+        <a href="#about">About</a>
+        <a href="labs.html">Labs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-  <header>
-    <h1>Architecture & Developer Space</h1>
-    <p>Hands-On CCNA & CCNP Labs — Learn by Doing</p>
+    <header>
+        <h1>Architecture & Developer Space</h1>
+        <p>Hands-On CCNA & CCNP Labs — Learn by Doing</p>
 
-    <div class="terminal" style="max-width: 650px; margin: 30px auto;">
-      <div class="terminal-header">
-        <span class="dot" style="background: #ff5f56;"></span>
-        <span class="dot" style="background: #ffbd2e;"></span>
-        <span class="dot" style="background: #27c93f;"></span>
-        <span style="margin-left: 10px; font-size: 12px; color: #94a3b8;">guest@emcglobal: ~</span>
-      </div>
-      <div class="terminal-body">
-        <div><span class="prompt">guest@emcglobal:~$</span> <span>ls /labs</span></div>
-        <div style="color: #3b82f6; margin-bottom: 10px;">VLANs, EIGRP, OSPF, Automation...</div>
-        <div><span class="prompt">guest@emcglobal:~$</span> <span>status --network</span></div>
-        <div style="color: #22c55e;">System Online. Ready for Lab deployment.</div>
-      </div>
-    </div>
-    <a href="#labs" class="btn-main mt-3">Start Practicing</a>
-  </header>
-
-  <section class="split-container" id="about">
-    <div class="about-content">
-        <div style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px;">The Platform</div>
-        <h2>Engineering Mastery</h2>
-        <p>
-          We provide step-by-step Cisco networking labs designed to help you master real-world skills. 
-          From basic routing to advanced switching, our content is built specifically for engineers aiming for certification excellence.
-        </p>
-        <p style="margin-top: 20px; font-weight: 600; color: var(--primary);">Join 1,000+ students globally 🌍</p>
-    </div>
-
-    <div class="features-grid">
-        <div class="feature-card-horizontal">
-            <div class="icon-box">⌨️</div>
-            <div>
-                <h4 style="margin: 0; font-weight: 700;">Real CLI Focus</h4>
-                <p style="margin: 5px 0 0; font-size: 0.9rem; color: #64748b;">Practice actual Cisco IOS commands used in industry.</p>
+        <div class="terminal" style="max-width: 650px; margin: 30px auto;">
+            <div class="terminal-header">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span style="margin-left: 10px; font-size: 12px; color: #94a3b8;">guest@emcglobal: ~</span>
+            </div>
+            <div class="terminal-body">
+                <div><span class="prompt">guest@emcglobal:~$</span> ls /labs</div>
+                <div style="color: #3b82f6;">VLANs, EIGRP, OSPF, Automation...</div>
+                <div><span class="prompt">guest@emcglobal:~$</span> initializing... <span class="cursor"></span></div>
             </div>
         </div>
-        <div class="feature-card-horizontal">
-            <div class="icon-box">📚</div>
-            <div>
-                <h4 style="margin: 0; font-weight: 700;">Step-by-Step</h4>
-                <p style="margin: 5px 0 0; font-size: 0.9rem; color: #64748b;">Structured guides that ensure clear progression.</p>
+        <a href="#labs" class="btn-main">Explore Labs</a>
+    </header>
+
+    <section class="split-container" id="about">
+        <div class="about-content">
+            <div style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px;">Network Architecture</div>
+            <h2>Engineering Mastery</h2>
+            <p>Master Cisco networking through real-world scenarios. Our labs are built for engineers who want to go beyond the theory and build production-ready skills.</p>
+            <p style="font-weight: 600; color: var(--primary);">Trusted by 1,000+ students worldwide.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card-horizontal">
+                <div style="font-size: 2rem;">⌨️</div>
+                <div>
+                    <h4 style="margin: 0; font-weight: 700;">Real CLI Focus</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Practice actual IOS commands.</p>
+                </div>
+            </div>
+            <div class="feature-card-horizontal">
+                <div style="font-size: 2rem;">🚀</div>
+                <div>
+                    <h4 style="margin: 0; font-weight: 700;">Career Ready</h4>
+                    <h4 style="margin: 0; font-weight: 700;">Career Ready</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Build infrastructure confidence.</p>
+                </div>
             </div>
         </div>
-        <div class="feature-card-horizontal">
-            <div class="icon-box">🚀</div>
-            <div>
-                <h4 style="margin: 0; font-weight: 700;">Career Ready</h4>
-                <p style="margin: 5px 0 0; font-size: 0.9rem; color: #64748b;">Build production-level network infrastructure skills.</p>
+    </section>
+
+    <section id="labs" style="padding: 60px 0;">
+        <h2 style="text-align: center; margin-bottom: 30px;">Featured Training</h2>
+        <div class="labs-scroll-container">
+            <div class="labs-track">
+                <a class="lab-item" href="#"><strong>VLAN Config</strong><p>Master broadcast domains.</p></a>
+                <a class="lab-item" href="#"><strong>OSPF Routing</strong><p>Dynamic routing mastery.</p></a>
+                <a class="lab-item" href="#"><strong>Trunking</strong><p>802.1Q configuration.</p></a>
+                <a class="lab-item" href="#"><strong>VLAN Config</strong><p>Master broadcast domains.</p></a>
+                <a class="lab-item" href="#"><strong>OSPF Routing</strong><p>Dynamic routing mastery.</p></a>
+            </div>
+        </div>
+    </section>
+
+    <div id="download-broker-overlay">
+        <div class="broker-card">
+            <div class="broker-content">
+                <h4>Preparing Lab File...</h4>
+                <div class="broker-progress"><div class="broker-bar"></div></div>
             </div>
         </div>
     </div>
-  </section>
 
-  <section id="labs" style="padding: 60px 0; background: white;">
-    <h2 style="text-align: center; font-weight: 800;">Featured Labs</h2>
-    <div class="labs-scroll-container">
-      <div class="labs-track">
-        <a class="lab-item" href="#">
-          <strong>VLAN Configuration</strong>
-          <p style="font-size: 0.85rem; opacity: 0.8;">Master broadcast domains and security.</p>
-        </a>
-        <a class="lab-item" href="#">
-          <strong>Trunking Config</strong>
-          <p style="font-size: 0.85rem; opacity: 0.8;">Configure 802.1Q trunks between switches.</p>
-        </a>
-        <a class="lab-item" href="#">
-          <strong>EIGRP Routing</strong>
-          <p style="font-size: 0.85rem; opacity: 0.8;">Dynamic routing for professionals.</p>
-        </a>
-        <a class="lab-item" href="#">
-          <strong>OSPF Single Area</strong>
-          <p style="font-size: 0.85rem; opacity: 0.8;">Configure OSPFv2 for dynamic routing.</p>
-        </a>
-        <a class="lab-item" href="#">
-          <strong>IPv6 Config</strong>
-          <p style="font-size: 0.85rem; opacity: 0.8;">Enable IPv6 routing and Unicast.</p>
-        </a>
-        <a class="lab-item" href="#">
-            <strong>VLAN Configuration</strong>
-            <p style="font-size: 0.85rem; opacity: 0.8;">Master broadcast domains and security.</p>
-          </a>
-      </div>
-    </div>
-  </section>
-
-  <footer style="padding: 40px; text-align: center; color: #94a3b8; border-top: 1px solid var(--border);">
-    <p>© 2026 Architecture & Developer Space | CCNA Mastery</p>
-  </footer>
+    <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--border);">
+        <p>© 2026 Architecture & Developer Space</p>
+    </footer>
 
 </body>
 </html>
-
