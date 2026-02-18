@@ -1,14 +1,13 @@
-/* Modern Cyber-Arctic Theme - Engineered for 2026 */
+/* --- MERGED NETWORKING THEME 2026 --- */
 :root {
-  --primary: #2563eb;       /* Royal Blue */
-  --accent: #0ea5e9;        /* Sky Blue */
-  --bg-light: #f8fafc;      /* Arctic White */
-  --card-bg: #ffffff;
-  --text-main: #0f172a;     /* Deep Navy */
-  --text-muted: #64748b;    /* Steel Gray */
-  --border: rgba(0, 0, 0, 0.06);
-  --glass: rgba(255, 255, 255, 0.8);
-  --neon-glow: 0 10px 30px rgba(37, 99, 235, 0.15);
+  --primary: #2563eb;
+  --accent: #0ea5e9;
+  --bg-light: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: rgba(0, 0, 0, 0.08);
+  --terminal-black: #000000;
+  --card-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -19,27 +18,25 @@
 
 body {
   background-color: var(--bg-light);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
   color: var(--text-main);
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  line-height: 1.6;
+  margin: 0;
+  overflow-x: hidden;
 }
 
-/* --- Navigation: Blurred Glass Effect --- */
+/* --- Navigation (Glass Effect) --- */
 nav {
-  background: var(--glass);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  padding: 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 18px 0;
   border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: center;
-  gap: 30px;
 }
 
 nav a {
@@ -48,174 +45,156 @@ nav a {
   font-weight: 700;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-nav a:hover {
-  color: var(--primary);
-  transform: translateY(-1px);
-}
+nav a:hover { color: var(--primary); }
 
-/* --- Header: Clean & Powerful --- */
+/* --- Header & Hero --- */
 header {
-  padding: 100px 20px 60px 20px;
+  padding: 80px 20px;
   text-align: center;
-  background: transparent;
+  background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.05), transparent), url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 header h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
-  letter-spacing: -2px;
-  background: linear-gradient(135deg, var(--text-main), var(--primary));
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  letter-spacing: -1.5px;
+  background: linear-gradient(to right, #0f172a, var(--primary));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
 }
 
-header p {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  max-width: 700px;
+/* --- THE SPLIT LAYOUT (About & Features) --- */
+.split-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  padding: 100px 5%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* --- Sections: Elevated Floating Cards --- */
-section, main {
-  max-width: 1150px;
-  margin: 40px auto;
-  padding: 50px;
-  background: var(--card-bg);
-  border-radius: 30px;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
-  position: relative;
-}
-
-/* Side-by-Side Dynamic Layout (The non-boring fix) */
-.split-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-h2 {
+.about-content h2 {
   font-weight: 800;
+  font-size: 2.5rem;
   color: var(--text-main);
-  margin-bottom: 25px;
-  font-size: 2rem;
-  letter-spacing: -1px;
+  border-left: 5px solid var(--primary);
+  padding-left: 15px;
 }
 
-/* --- Attractive Cards --- */
-.card, .lab-item {
-  background: #fff;
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: block;
-}
-
-.card:hover, .lab-item:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: var(--primary);
-  box-shadow: 0 25px 50px rgba(37, 99, 235, 0.1);
-}
-
-.lab-item strong {
-  display: block;
-  font-size: 1.2rem;
-  color: var(--primary);
-  margin-bottom: 8px;
-}
-
-/* --- The Terminal: High Contrast Focus --- */
-.terminal {
-  background: #0f172a; /* Keep terminal dark for authentic feel */
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-  margin: 30px auto;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.terminal-header {
-  background: #1e293b;
-  padding: 12px 20px;
+.features-grid {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 20px;
 }
 
+.feature-card-horizontal {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.feature-card-horizontal:hover {
+  transform: translateX(15px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
+}
+
+/* --- Terminal Styles --- */
+.terminal {
+  background: var(--terminal-black);
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  overflow: hidden;
+  text-align: left;
+}
+
+.terminal-header { background: #1e293b; padding: 12px 20px; display: flex; align-items: center; gap: 8px;}
 .dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
 
 .terminal-body {
-  padding: 30px;
+  padding: 25px;
   font-family: 'Fira Code', monospace;
-  font-size: 0.95rem;
-  color: #e2e8f0;
+  font-size: 0.9rem;
+  color: #f8fafc;
 }
 
-/* --- Search & Interaction --- */
+.prompt { color: #27c93f; font-weight: bold; }
+
+/* --- Lab Scrolling --- */
+.labs-scroll-container { overflow: hidden; padding: 40px 0; }
+.labs-track { display: flex; gap: 20px; animation: scrollLabs 40s linear infinite; width: max-content; }
+.lab-item {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 25px;
+  border-radius: 20px;
+  width: 280px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.lab-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+@keyframes scrollLabs { to { transform: translateX(-50%); } }
+
+/* --- Functional Components (Search, Buttons, Broker) --- */
 .search-input {
   width: 100%;
-  padding: 15px 25px;
-  border-radius: 15px;
+  padding: 12px 20px;
+  border-radius: 30px;
   border: 1px solid var(--border);
-  background: #fff;
-  font-size: 1rem;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
-
-.search-input:focus {
+  background: white;
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  transition: 0.3s;
 }
 
-/* --- Buttons: Neon Gradients --- */
-.btn, .btn-main {
+.btn-main, .btn-success {
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: white !important;
-  padding: 14px 35px;
-  border-radius: 12px;
+  padding: 12px 30px;
+  border-radius: 10px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
   border: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+  transition: 0.3s;
 }
 
-.btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+/* Download Broker Overlay */
+#download-broker-overlay {
+  position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+  transform: translateY(150%); transition: 0.4s;
 }
-
-/* Scrolling Track Animation */
-@keyframes scrollLabs {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+#download-broker-overlay.active { transform: translateY(0); }
+.broker-card {
+  background: #1e293b; color: white; border-radius: 12px; padding: 15px;
+  display: flex; align-items: center; gap: 15px; border: 1px solid var(--primary);
 }
+.broker-bar { height: 4px; background: var(--primary); width: 0%; transition: 1.4s linear; }
 
-.labs-track {
-  display: flex;
-  gap: 25px;
-  width: max-content;
-  animation: scrollLabs 40s linear infinite;
-}
-
-/* Footer */
-footer {
-  padding: 80px 20px;
-  text-align: center;
-  background: white;
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
+/* Responsive */
+@media (max-width: 992px) {
+  .split-container { grid-template-columns: 1fr; text-align: center; }
+  .feature-card-horizontal:hover { transform: translateY(-5px); }
 }
